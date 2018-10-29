@@ -1,0 +1,78 @@
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<div class="container">
+<h1>WELCOME TO GIT-SEARCH</h1><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqL7rIo8nFCMweTs_1cQTHEF3Bqc7JQ0fY0rSPB-zwBj53f3hF">
+</div>
+<div class="container-fluid">
+  <form action="" class="search-form" class="card-panel teal lighten-2" >
+    <div class="form-group">
+      <br>
+      <input type="text" class="form-control" placeholder="Enter username" id="form" [(ngModel)]="username" name="username" (keyup)="call_profile()">
+    </div>
+  </form>
+  
+  <div *ngIf="profile">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        {{profile.name}} <small>{{profile.login}}</small>
+        <span *ngIf="profile.company">,  Works at{{profile.company}}</span>
+        {{profile.location}}
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-sm-3">
+            <img src= "{{profile.avatar_url}}"  alt="Profile Image">
+          </div>
+          <div class="col-sm-5">
+            <ul class="list-group">
+              <li class="list-group-item" *ngIf="profile.bio">{{profile.bio}}</li>
+              <li class="list-group-item" *ngIf="profile.hirable">Available for hire </li>
+              <li class="list-group-item" *ngIf="profile.blog">{{profile.blog}}</li>
+              <li class="list-group-item" *ngIf="profile.email">{{profile.email}}</li>
+            </ul>
+          </div>
+          <div class="col-sm-4">
+            <p>
+              <button class="btn btn-default btn-sm" >{{profile.public_repos}}Public Repos</button>
+              &nbsp;
+              <button class="btn btn-primary btn-sm" >{{profile.followers}}Followers</button>
+              &nbsp;
+              <button class="btn btn-success btn-sm" >{{profile.following}}Following</button>
+              &nbsp;
+            </p>
+            <p>
+              <a href="{{profile.html_url}}" class="btn btn-sm btn-danger">View profile on Github</a>
+            </p>
+
+  
+            <div class="panel panel-success panel">
+                <div class="panel-heading heading">
+                  <h3 class="panel-title" class="repo">REPOSITORIES</h3>
+                </div>
+                <div class="panel-body" *ngFor="let repo of repos" index= i>
+                  <p class="clearfix">
+                    <span class="repos"> {{repo.name}} </span>
+                    <br>
+                    <span class="description" *ngIf="repo.description"><b>*</b> {{repo.description}}</span>
+                  </p>
+
+  
+  
+                  <p class="creation">Date created: &nbsp;  <b>{{repo.created_at|date}}</b></p>
+                  <p class="creation">Date of update: &nbsp;   <b>{{repo.updated_at|date}}</b></p>
+                  <a href="{{repo.html_url}}" target="_blank" class="btn btn-sm btn-warning pull-right buttons">View this project on Github</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{repo.homepage}}" target="_blank" *ngIf="repo.homepage" class="btn btn-sm btn-success pull-right buttons">View Live Page</a>
+                  <br>
+                  <br>
+  
+  
+                </div>
+              </div>
+  
+  
+  
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
