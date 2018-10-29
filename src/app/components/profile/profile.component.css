@@ -8,3 +8,9 @@
     color: white;
     font-size: 5em;
 }
+.col-sm-4{
+    width: 300px;
+    border: colorless;
+    padding: 25px;
+    margin: 25px;
+}
