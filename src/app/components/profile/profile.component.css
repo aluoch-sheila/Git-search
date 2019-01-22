@@ -4,9 +4,10 @@
     background-repeat: no-repeat;
 }
 .container{
-    background-color: black;
-    color: white;
-    font-size: 5em;
+    background-color: grey;
+    color: black;
+    font-size: 6em;
+    font-family: 'Shojumaru', cursive;
 }
 .col-sm-4{
     width: 300px;
